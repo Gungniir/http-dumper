@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/gorilla/mux"
 	"io"
 	"log"
 	"net/http"
@@ -11,8 +12,9 @@ import (
 func main() {
 	log.Printf("ListenPath: %s", os.Getenv("LISTEN_PATH"))
 
-	http.HandleFunc(os.Getenv("LISTEN_PATH"), dump)
-	log.Fatal(http.ListenAndServe(":80", nil))
+	r := mux.NewRouter().StrictSlash(true)
+	r.HandleFunc(os.Getenv("LISTEN_PATH"), dump)
+	log.Fatal(http.ListenAndServe(":80", r))
 }
 
 func dump(w http.ResponseWriter, r *http.Request) {

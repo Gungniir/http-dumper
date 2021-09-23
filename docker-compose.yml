@@ -5,6 +5,5 @@ services:
     ports:
       - "45565:80"
     environment:
-      LISTEN: ":25565"
-      LISTEN_PATH: "/api/1.0.0/payment/"
+      LISTEN_PATH: "/api/1.0.0/payment_yoo/"
       ANSWER: "OK"
