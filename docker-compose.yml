@@ -1,0 +1,10 @@
+version: "2.2"
+services:
+  server:
+    build: .
+    ports:
+      - "45565:80"
+    environment:
+      LISTEN: ":25565"
+      LISTEN_PATH: "/api/1.0.0/payment/"
+      ANSWER: "OK"
